@@ -32,3 +32,18 @@ class Solution:
         head.next.next = head
         head.next = None
         return p
+
+    def reverseList3(self, head: ListNode) -> ListNode:
+        pre,cur = None,head
+        # 遍历
+        while cur:
+            # cur.next, pre, cur = pre, cur, cur.next
+
+            # 记录当前节点的下一个节点
+            tmp = cur.next
+            # 然后将当前节点指向pre
+            cur.next = pre
+            # pre和cur节点都前进一位
+            pre = cur
+            cur = tmp
+        return pre
