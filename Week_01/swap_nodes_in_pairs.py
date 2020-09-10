@@ -27,20 +27,56 @@
 
 class Solution:
     def swapPairs(self, head: ListNode) -> ListNode:
+        """
+        递归方式
+        :param head:
+        :return:
+        """
         # 1. 终止条件：当前没有节点或者只有一个节点，肯定就不需要交换了
         if head is None or head.next is None:
-            return head;
+            return head
 
         # 2. 调用单元
         # 需要交换的两个节点是 head 和 head.next
-        firstNode = head;
-        secondNode = head.next;
+        firstNode = head
+        secondNode = head.next
         # firstNode 连接后面交换完成的子链表
-        firstNode.next = self.swapPairs(secondNode.next);
+        firstNode.next = self.swapPairs(secondNode.next)
         # secondNode 连接 firstNode
-        secondNode.next = firstNode;
+        secondNode.next = firstNode
 
         # 3. 返回值：返回交换完成的子链表
         # secondNode 变成了头结点
-        return secondNode;
+        return secondNode
+
+    def swapPairs2(self, head: ListNode) -> ListNode:
+        """
+        迭代方式
+        :param head:
+        :return:
+        """
+        dummy = ListNode(-1)
+        dummy.next = head
+        prev_node = dummy
+
+        while head and head.next:
+            firstNode = head
+            secondNode = head.next
+
+            prev_node.next = secondNode
+            firstNode.next = secondNode.next
+            secondNode.next = firstNode
+
+            prev_node = firstNode
+            head = firstNode.next
+        return dummy.next
+
+    def swapPairs3(self, head: ListNode) -> ListNode:
+        pre, pre.next = self, head
+        while pre.next and pre.next.next:
+            a = pre.next
+            b = a.next
+            pre.next, b.next, a.next = b, a, b.next
+            pre = a
+        return self.next
 # leetcode submit region end(Prohibit modification and deletion)
