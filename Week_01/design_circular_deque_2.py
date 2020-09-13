@@ -15,11 +15,9 @@ class MyCircularDeque:
         """
         if self.isFull():
             return False
-        if self.isEmpty():
-            self._data[self._front] = value
-        else:
+        if not self.isEmpty():
             self._front = (self._front - 1) % self._capacity
-            self._data[self._front] = value
+        self._data[self._front] = value
         self._size += 1
         return True
 
@@ -29,11 +27,9 @@ class MyCircularDeque:
         """
         if self.isFull():
             return False
-        if self.isEmpty():
-            self._data[self._rear] = value
-        else:
+        if not self.isEmpty():
             self._rear = (self._rear + 1) % self._capacity
-            self._data[self._rear] = value
+        self._data[self._rear] = value
         self._size += 1
         return True
 
