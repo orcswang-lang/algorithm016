@@ -23,4 +23,8 @@ class Solution:
         return (num - 1) % 9 + 1 if num != 0 else 0
 
     def addDigits4(self, num: int) -> int:
+        res = num % 9
+        return res if res != 0 or num == 0 else 9
+
+    def addDigits5(self, num: int) -> int:
         return num % 9 or 9 * bool(num)
