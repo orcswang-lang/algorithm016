@@ -12,3 +12,30 @@ class Solution:
             nums.pop(idx)
             nums.append(0)
             pre_idx += 1
+
+    def moveZeroes1(self, nums: List[int]) -> None:
+        i = 0
+        n = len(nums)
+        while i < n:
+            if nums[i] != 0:
+                i += 1
+                continue
+            nums.pop(i)
+            nums.append(0)
+            n -= 1
+
+    def moveZeroes2(self, nums: List[int]) -> None:
+        p = 0
+        for i in range(len(nums)):
+            if nums[i] == 0: continue
+            nums[i], nums[p] = nums[p], nums[i]
+            p += 1
+
+    def moveZeroes3(self, nums: List[int]) -> None:
+        size, i = 0, 0
+        while i < len(nums):
+            if nums[i] == 0:
+                size += 1
+            else:
+                nums[i - size], nums[i] = nums[i], nums[i - size]
+            i += 1
