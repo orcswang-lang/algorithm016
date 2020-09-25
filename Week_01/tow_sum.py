@@ -25,4 +25,12 @@ class Solution:
                 idx[nums[i]] = i
                 continue
             return idx[target - nums[i]], i
+
+    def twoSum1(self, nums: List[int], target: int) -> List[int]:
+        idx = {}
+        for i, num in enumerate(nums):
+            if target - num not in idx:
+                idx[num] = i
+                continue
+            return idx[target - num], i
 # leetcode submit region end(Prohibit modification and deletion)
