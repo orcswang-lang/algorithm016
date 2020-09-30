@@ -7,16 +7,16 @@ visited = set()
 
 def dfs(node, visited):
     if node in visited: # terminator
-    	# already visited 
+        # already visited 
     	return 
 
-	visited.add(node) 
+    visited.add(node) 
 
-	# process current node here. 
+    # process current node here. 
 	...
-	for next_node in node.children(): 
-		if next_node not in visited: 
-			dfs(next_node, visited)
+    for next_node in node.children(): 
+        if next_node not in visited: 
+            dfs(next_node, visited)
 ```
 
 #### 非递归写法
@@ -45,15 +45,15 @@ def DFS(self, tree):
 ```python
 def BFS(graph, start, end):
     visited = set()
-	queue = [] 
-	queue.append([start]) 
-	while queue: 
-		node = queue.pop() 
-		visited.add(node)
-		process(node) 
-		nodes = generate_related_nodes(node) 
-		queue.push(nodes)
-	# other processing work 
+    queue = [] 
+    queue.append([start]) 
+    while queue: 
+        node = queue.pop()
+        visited.add(node)
+        process(node)
+        nodes = generate_related_nodes(node)
+        queue.push(nodes)
+    # other processing work 
 	...
 ```
 
@@ -61,12 +61,12 @@ def BFS(graph, start, end):
 ```python
 left, right = 0, len(array) - 1 
 while left <= right: 
-	  mid = (left + right) / 2 
-	  if array[mid] == target: 
-		    # find the target!! 
-		    break or return result 
-	  elif array[mid] < target: 
-		    left = mid + 1 
-	  else: 
-		    right = mid - 1
+    mid = (left + right) / 2 
+    if array[mid] == target: 
+        # find the target!! 
+        break or return result 
+    elif array[mid] < target: 
+        left = mid + 1 
+    else: 
+        right = mid - 1
 ```
